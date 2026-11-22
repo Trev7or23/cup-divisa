@@ -1,8 +1,15 @@
 ---
+import Home from '@/components/home/Home'
 import Layout from '../layouts/Layout.astro'
-import Home from '@components/home/Home.astro'
+import { getCurrencies } from '@/services/api/currencies.ts'
+import { getInitialValues } from '@/utils/currencies'
+
+const currencies = await getCurrencies()
+const buildTime = new Date().toISOString()
+
+const initialData = getInitialValues(currencies)
 ---
 
 <Layout>
-  <Home />
+  <Home client:load buildTime={buildTime} initialData={initialData} />
 </Layout>

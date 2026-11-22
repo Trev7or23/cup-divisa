@@ -14,9 +14,9 @@ import Footer from '@/components/shared/ui/Footer.astro'
     <meta name="generator" content={Astro.generator} />
     <title>Cup Tracker</title>
   </head>
-  <body>
+  <body class="min-h-dvh bg-black text-white">
     <Header />
     <slot />
-    <Footer />
+    <Footer className="text-red-500" />
   </body>
 </html>
