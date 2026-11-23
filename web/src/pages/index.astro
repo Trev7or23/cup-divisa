@@ -1,15 +1,21 @@
 ---
 import Home from '@/components/home/Home'
+import Skeleton from '@/components/home/ui/Skeleton.astro'
 import Layout from '../layouts/Layout.astro'
 import { getCurrencies } from '@/services/api/currencies.ts'
-import { getInitialValues } from '@/utils/currencies'
 
 const currencies = await getCurrencies()
 const buildTime = new Date().toISOString()
-
-const initialData = getInitialValues(currencies)
 ---
 
 <Layout>
-  <Home client:load buildTime={buildTime} initialData={initialData} />
+  <Home
+    client:only="preact"
+    buildTime={buildTime}
+    currenciesData={currencies.tasas}
+  >
+    <Fragment slot="fallback">
+      <Skeleton />
+    </Fragment>
+  </Home>
 </Layout>
