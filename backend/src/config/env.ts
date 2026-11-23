@@ -1,5 +1,11 @@
 import 'dotenv/config'
 
+if (!process.env.API_KEY) {
+  console.error('FATAL ERROR: No Api Key Inserted')
+  console.error('Set API_KEY Value on the .env File to start the server')
+  process.exit(1)
+}
+
 export const env = {
   port: Number(process.env.PORT) || 3000,
   externalApiUrl:
@@ -7,4 +13,5 @@ export const env = {
   syncIntervalMs: Number(process.env.SYNC_INTERVAL_MS) || 60_000,
   dbFile: process.env.DB_FILE || './data/database.sqlite',
   externalApiToken: process.env.EXTERNAL_API_TOKEN || '',
+  API_KEY: process.env.API_KEY || '',
 } as const
