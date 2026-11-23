@@ -20,6 +20,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,11 +37,11 @@ jobs:
       - name: Write build environment
         working-directory: web
         env:
-          API_URL: ${{ vars.API_URL }}
+          API_URL: ${{ secrets.API_URL }}
           API_KEY: ${{ secrets.API_KEY }}
         run: |
           if [ -z "$API_URL" ] || [ -z "$API_KEY" ]; then
-            echo "::error::Configure the API_URL repository variable and the API_KEY secret before deploying."
+            echo "::error::Configure the API_URL and API_KEY secrets in the github-pages environment before deploying."
             exit 1
           fi
           printf 'API=%s\nAPI_KEY=%s\n' "$API_URL" "$API_KEY" > .env
