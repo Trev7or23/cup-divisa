@@ -1,20 +1,23 @@
-import sqlite3 from 'sqlite3'
-import { open, Database } from 'sqlite'
-import { mkdir } from 'node:fs/promises'
-import path from 'node:path'
+import { Pool } from 'pg'
 import { env } from '../config/env.js'
 import { initSchema } from './schema.js'
 
-let db: Database | null = null
+let pool: Pool | null = null
 
-export async function getDb(): Promise<Database> {
-  if (db) return db
+export async function getDb(): Promise<Pool> {
+  if (pool) return pool
 
-  await mkdir(path.dirname(env.dbFile), { recursive: true })
+  pool = new Pool({
+    connectionString: env.databaseUrl,
+    ...(env.databaseSsl ? { ssl: { rejectUnauthorized: false } } : {}),
+  })
 
-  db = await open({ filename: env.dbFile, driver: sqlite3.Database })
-  await db.exec(`PRAGMA journal_mode = WAL;`)
-  await initSchema(db)
+  await initSchema(pool)
+  return pool
+}
 
-  return db
+export async function closeDb(): Promise<void> {
+  if (!pool) return
+  await pool.end()
+  pool = null
 }

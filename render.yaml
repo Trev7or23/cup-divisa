@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: cup-divisa-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: pnpm install --frozen-lockfile --prod=false && pnpm build
+    startCommand: node dist/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cup-divisa-db
+          property: connectionString
+      - key: API_KEY
+        sync: false
+      - key: EXTERNAL_API_TOKEN
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://trev7or23.github.io
+      - key: SYNC_INTERVAL_MS
+        value: 1800000
+
+databases:
+  - name: cup-divisa-db
+    plan: free
+    databaseName: cup_divisa
+    user: cup_divisa

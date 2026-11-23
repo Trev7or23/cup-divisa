@@ -12,10 +12,16 @@ export interface SnapshotRow {
   hour: number
   minutes: number
   seconds: number
-  tasas: string // JSON crudo tal cual en BD
-  fetched_at: string
+  tasas: Record<string, number>
+  fetched_at: Date | string
 }
 
-export interface Snapshot extends Omit<SnapshotRow, 'tasas'> {
+export interface Snapshot {
+  id: number
+  date: string
+  hour: number
+  minutes: number
+  seconds: number
   tasas: Record<string, number>
+  fetched_at: string
 }

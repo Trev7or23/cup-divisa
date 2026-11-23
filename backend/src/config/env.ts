@@ -6,6 +6,12 @@ if (!process.env.API_KEY) {
   process.exit(1)
 }
 
+if (!process.env.DATABASE_URL) {
+  console.error('FATAL ERROR: No DATABASE_URL inserted')
+  console.error('Set DATABASE_URL Value on the .env File to start the server')
+  process.exit(1)
+}
+
 if (process.env.NODE_ENV !== 'production') {
   console.info(`Actual External Token is: ${process.env.API_KEY}`)
 }
@@ -15,6 +21,9 @@ export const env = {
   externalApiUrl:
     process.env.EXTERNAL_API_URL || 'https://tasas.eltoque.com/v1/trmi',
   syncIntervalMs: Number(process.env.SYNC_INTERVAL_MS) || 60_000,
+  databaseUrl: process.env.DATABASE_URL || '',
+  databaseSsl: process.env.DATABASE_SSL === 'true',
+  // Only used by the one-off SQLite -> PostgreSQL migration script.
   dbFile: process.env.DB_FILE || './data/database.sqlite',
   externalApiToken: process.env.EXTERNAL_API_TOKEN || '',
   API_KEY: process.env.API_KEY || '',

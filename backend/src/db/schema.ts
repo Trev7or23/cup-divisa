@@ -1,15 +1,15 @@
-import type { Database } from 'sqlite'
+import type { Pool } from 'pg'
 
-export async function initSchema(db: Database): Promise<void> {
-  await db.exec(`
+export async function initSchema(db: Pool): Promise<void> {
+  await db.query(`
     CREATE TABLE IF NOT EXISTS tasas_snapshots (
-      id         INTEGER PRIMARY KEY AUTOINCREMENT,
-      date       TEXT    NOT NULL,
-      hour       INTEGER NOT NULL,
-      minutes    INTEGER NOT NULL,
-      seconds    INTEGER NOT NULL,
-      tasas      TEXT    NOT NULL,
-      fetched_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      id         SERIAL PRIMARY KEY,
+      date       TEXT        NOT NULL,
+      hour       INTEGER     NOT NULL,
+      minutes    INTEGER     NOT NULL,
+      seconds    INTEGER     NOT NULL,
+      tasas      JSONB       NOT NULL,
+      fetched_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       UNIQUE(date, hour)
     );
 

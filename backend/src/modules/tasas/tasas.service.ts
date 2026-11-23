@@ -3,13 +3,11 @@ import type { Snapshot, SnapshotRow } from './tasas.types.js'
 
 function toSnapshot(row: SnapshotRow): Snapshot {
   return {
-    id: row.id,
-    date: row.date,
-    hour: row.hour,
-    minutes: row.minutes,
-    seconds: row.seconds,
-    tasas: JSON.parse(row.tasas),
-    fetched_at: row.fetched_at,
+    ...row,
+    fetched_at:
+      row.fetched_at instanceof Date
+        ? row.fetched_at.toISOString()
+        : row.fetched_at,
   }
 }
 

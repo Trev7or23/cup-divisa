@@ -8,7 +8,7 @@ export function startSync(): void {
     await syncOnce()
     timer = setTimeout(loop, env.syncIntervalMs)
   }
-  loop() // primera ejecución inmediata
+  timer = setTimeout(loop, env.syncIntervalMs)
 }
 
 export function stopSync(): void {

@@ -2,10 +2,12 @@ import { createApp } from './app.js'
 import { env } from './config/env.js'
 import { startSync } from './sync/sync.scheduler.js'
 import { getDb } from './db/connection.js'
+import { syncOnce } from './sync/sync.service.js'
 
 async function main() {
   await getDb() // crea la BD y el esquema
-  startSync() // arranca el cron
+  await syncOnce() // primera sincronización antes de aceptar requests
+  startSync() // programa las siguientes sincronizaciones
 
   const app = createApp()
   app.listen(env.port, () => {
