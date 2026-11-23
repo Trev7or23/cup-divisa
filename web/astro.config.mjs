@@ -7,6 +7,9 @@ import preact from '@astrojs/preact'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://trev7or23.github.io',
+  base: '/cup-divisa',
+
   vite: {
     plugins: [tailwindcss()],
   },

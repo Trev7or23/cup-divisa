@@ -3,6 +3,10 @@ import { Font } from 'astro:assets'
 import '@/global.css'
 import Header from '@/components/shared/ui/Header.astro'
 import Footer from '@/components/shared/ui/Footer.astro'
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
 ---
 
 <!doctype html>
@@ -10,8 +14,8 @@ import Footer from '@/components/shared/ui/Footer.astro'
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"

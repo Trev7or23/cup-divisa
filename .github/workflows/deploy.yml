@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Rebuild every 30 minutes so the build-time rates stay fresh.
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
+
+      - name: Write build environment
+        working-directory: web
+        env:
+          API_URL: ${{ vars.API_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          if [ -z "$API_URL" ] || [ -z "$API_KEY" ]; then
+            echo "::error::Configure the API_URL repository variable and the API_KEY secret before deploying."
+            exit 1
+          fi
+          printf 'API=%s\nAPI_KEY=%s\n' "$API_URL" "$API_KEY" > .env
+
+      - name: Build
+        working-directory: web
+        run: bun run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
