@@ -48,7 +48,7 @@ export default function Currencies() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => (selectedCurrency.value = currentCurrency)}
-                class={`flex flex-col items-center justify-center rounded-base px-1 py-2 font-headline text-headline-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container ${isActive
+                class={`flex items-center max-w-[5ch] md:max-w-none  rounded-base px-1 py-2 font-headline text-headline-sm truncate text-right transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container ${isActive
                     ? 'bg-surface-container-high text-primary-container shadow-sm'
                     : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
                   }`}

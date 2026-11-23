@@ -13,17 +13,9 @@ export default function Home({ currenciesData, buildTime }: Props) {
   const timeAgo = getTimeAgo(buildTime)
 
   return (
-    <div class="flex flex-col items-center px-4 py-10 md:px-6 md:py-14 lg:px-10">
+    <div class="flex flex-col items-center px-4 py-4 md:px-6 lg:px-10">
       <div class="relative flex w-full max-w-[540px] flex-col items-center">
         {/* Glow ambiental de la tarjeta */}
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute -left-16 -top-20 h-64 w-64 rounded-full bg-primary-container/10 blur-3xl"
-        ></div>
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-secondary-container/15 blur-3xl"
-        ></div>
 
         <div class="relative z-10 flex w-full flex-col items-center">
           {/* Pill de sincronización */}

@@ -4,7 +4,10 @@ import Skeleton from '@/components/home/ui/Skeleton.astro'
 import Layout from '../layouts/Layout.astro'
 import { getCurrencies } from '@/services/api/currencies.ts'
 
-const currencies = await getCurrencies()
+// const currencies = await getCurrencies()
+// DEVELOPMENT
+const currencies = { tasas: { USD: 960, TRX: 680 } }
+
 const buildTime = new Date().toISOString()
 ---
 
