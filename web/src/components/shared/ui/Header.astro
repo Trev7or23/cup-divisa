@@ -1,0 +1,49 @@
+---
+const updateMinutes = 30
+---
+
+<header
+  class="sticky top-0 z-30 w-full border-b border-outline-variant/25 bg-surface-container-lowest/70 backdrop-blur-md"
+>
+  <div
+    class="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-10"
+  >
+    <!-- Marca -->
+    <a href="/" class="group flex items-center gap-3" aria-label="CUP Tracker — inicio">
+      <span
+        class="grid h-10 w-10 place-items-center rounded-lg bg-surface-container-high ring-1 ring-outline-variant/40 transition-shadow duration-200 group-hover:ring-primary-container/50 group-hover:shadow-[0_0_16px_rgba(0,245,212,0.25)]"
+      >
+        <span
+          class="grid h-8 w-8 place-items-center rounded-md bg-gradient-to-br from-primary-container via-teal-400 to-secondary-container text-on-primary"
+        >
+          <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true">
+            <path
+              d="M12 2v20M17 5.5c0-1.4-2.2-2.5-5-2.5s-5 1.1-5 2.5S9.2 8 12 8s5 1.1 5 2.5-2.2 2.5-5 2.5-5 1.1-5 2.5 2.2 2.5 5 2.5 5-1.1 5-2.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </span>
+      <span class="flex flex-col font-headline leading-none">
+        <span class="text-headline-sm font-bold tracking-tight text-on-surface">CUP</span>
+        <span class="text-body-sm font-medium tracking-wide text-on-surface-variant">Tracker</span>
+      </span>
+    </a>
+
+    <!-- Estado de actualización -->
+    <div
+      class="inline-flex items-center gap-2 rounded-full border border-outline-variant/30 bg-surface-container-high/60 px-3 py-1.5 font-mono text-label-sm text-on-surface-variant sm:px-4"
+    >
+      <span class="relative flex h-2 w-2">
+        <span
+          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-tertiary-fixed-dim opacity-60"
+        ></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-tertiary-fixed-dim"></span>
+      </span>
+      <span class="hidden sm:inline">Se actualiza cada {updateMinutes} min</span>
+      <span class="sm:hidden">{updateMinutes} min</span>
+    </div>
+  </div>
+</header>

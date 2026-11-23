@@ -1,0 +1,400 @@
+<!DOCTYPE html><html class="dark" lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Monitor &amp; Conversor CUP | Tasas en Tiempo Real</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&amp;family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&amp;family=Space+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#313540","outline":"#83948f","surface":"#0f131d","on-error":"#690005","on-surface-variant":"#b9cac4","surface-tint":"#00dfc1","primary-fixed-dim":"#00dfc1","surface-container-high":"#262a35","tertiary-container":"#66f3b6","surface-container":"#1c1f2a","surface-container-highest":"#313540","surface-container-lowest":"#0a0e18","on-secondary-fixed-variant":"#004395","on-primary-container":"#006c5c","on-surface":"#dfe2f1","surface-container-low":"#171b26","primary-container":"#00f5d4","surface-dim":"#0f131d","on-tertiary-fixed":"#002113","on-tertiary":"#003824","tertiary":"#dcffea","on-secondary-fixed":"#001a42","on-primary-fixed":"#00201a","on-primary-fixed-variant":"#005144","on-tertiary-fixed-variant":"#005236","on-secondary":"#002e6a","tertiary-fixed-dim":"#4edea3","surface-bright":"#353944","on-secondary-container":"#e6ecff","primary":"#d7fff3","background":"#0f131d","primary-fixed":"#26fedc","on-background":"#dfe2f1","on-error-container":"#ffdad6","inverse-primary":"#006b5b","inverse-on-surface":"#2c303b","secondary-fixed":"#d8e2ff","outline-variant":"#3a4a46","inverse-surface":"#dfe2f1","secondary":"#adc6ff","on-primary":"#00382f","secondary-fixed-dim":"#adc6ff","tertiary-fixed":"#6ffbbe","secondary-container":"#0566d9","error-container":"#93000a","error":"#ffb4ab","on-tertiary-container":"#006d4a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"2rem","space-lg":"1.5rem","gutter-lg":"1.5rem","space-sm":"0.5rem","margin":"1rem","margin-md":"1.5rem","gutter":"1rem","space-md":"1rem","space-xs":"0.25rem","margin-lg":"2.5rem"},"fontFamily":{"headline-xl-mobile":["Space Grotesk"],"headline-sm":["Space Grotesk"],"body-sm":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"],"label-sm":["JetBrains Mono"],"headline-md":["Space Grotesk"],"label-md":["JetBrains Mono"],"headline-lg":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"body-md":["Hanken Grotesk"],"currency-tabular":["JetBrains Mono"],"headline-xl":["Space Grotesk"],"currency-display":["JetBrains Mono"]},"fontSize":{"headline-xl-mobile":["30px",{"lineHeight":"38px","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"currency-tabular":["14px",{"lineHeight":"20px","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","fontWeight":"700"}],"currency-display":["28px",{"lineHeight":"34px","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.35)]"><div class="h-16 w-full max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-primary-container text-[20px]">currency_exchange</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">CUP Tracker</span></div></div><div class="flex items-center gap-space-md"><div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high/80 text-on-surface-variant font-label-sm text-label-sm"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span>Se actualiza cada 30 min</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1 flex flex-col items-center justify-start px-margin md:px-margin-md lg:px-margin-lg"><div class="flex flex-col w-full items-center justify-center py-space-md sm:py-space-xl min-h-[calc(100vh-8rem)]">
+<div class="relative w-full max-w-[540px] flex flex-col items-center">
+<!-- Ambient glow decorative backdrop -->
+<div class="absolute -top-16 -left-12 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute -bottom-16 -right-12 w-72 h-72 bg-secondary-container/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- Status Sub-pill: Sincronización en vivo -->
+<div class="flex items-center w-full px-space-sm mb-space-sm justify-center">
+
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed">schedule</span>
+<span id="sync-time-badge">Última sincronización: hace 7 min</span>
+</div>
+</div>
+<!-- Central Interactive Unified Card -->
+<article class="w-full bg-surface-container rounded-xl shadow-2xl p-space-md sm:p-space-lg flex flex-col relative overflow-hidden backdrop-blur-md">
+<!-- Top Neon subtle hairline -->
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/70 to-transparent"></div>
+<!-- Currency Switcher Accessible Tabs -->
+<header class="w-full mb-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Divisa de referencia</span>
+<span class="font-label-sm text-label-sm text-primary-container bg-surface-container-high px-2 py-0.5 rounded-full">Mercado Informal</span>
+</div>
+<div aria-label="Seleccionar divisa para monitor y conversión" class="grid grid-cols-4 gap-1 p-1 bg-surface-container-lowest rounded-lg" role="tablist">
+<button aria-controls="currency-panel" aria-selected="false" class="currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface hover:bg-surface-container" data-change="+1.38%" data-currency="USD" data-icon="attach_money" data-name="Dólar Estadounidense" data-rate="365.00" id="tab-usd" role="tab" tabindex="-1" type="button">
+<span class="font-headline-sm text-headline-sm leading-tight">USD</span>
+
+</button>
+<button aria-controls="currency-panel" aria-selected="false" class="currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface hover:bg-surface-container" data-change="+0.76%" data-currency="EUR" data-icon="euro" data-name="Euro Europeo" data-rate="395.00" id="tab-eur" role="tab" tabindex="-1" type="button">
+<span class="font-headline-sm text-headline-sm leading-tight">EUR</span>
+
+</button>
+<button aria-controls="currency-panel" aria-selected="false" class="currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface hover:bg-surface-container" data-change="+0.00%" data-currency="MLC" data-icon="credit_card" data-name="Moneda Libremente Convertible" data-rate="270.00" id="tab-mlc" role="tab" tabindex="-1" type="button">
+<span class="font-headline-sm text-headline-sm leading-tight">MLC</span>
+
+</button>
+<button aria-controls="currency-panel" aria-selected="true" class="currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 bg-surface-container-high text-primary-container shadow-sm" data-change="+1.52%" data-currency="USDT" data-icon="toll" data-name="Tether Crypto USD" data-rate="368.50" id="tab-usdt" role="tab" tabindex="0" type="button">
+<span class="font-headline-sm text-headline-sm leading-tight">USDT</span>
+
+</button>
+</div>
+</header>
+<!-- Active Rate Display Box -->
+<section aria-labelledby="tab-usd" class="w-full bg-surface-container-low rounded-lg p-space-md sm:p-space-lg flex flex-col items-center text-center transition-all duration-300" id="currency-panel" role="tabpanel">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-primary-container text-[20px]" id="rate-icon">toll</span>
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wide uppercase" id="rate-currency-name">1 Tether Crypto USD (USDT)</span>
+</div>
+<!-- Prominent CUP value with transition container -->
+<div class="flex items-baseline justify-center gap-2 my-1">
+<span class="font-currency-display text-4xl sm:text-5xl font-bold tracking-tight text-on-surface font-currency-tabular transition-all duration-200" id="active-rate-value">368.50</span>
+<span class="font-headline-sm text-headline-sm text-primary-container font-semibold">CUP</span>
+</div>
+<!-- Variation Indicator -->
+<div class="flex items-center gap-2 mt-1 mb-space-sm">
+
+
+</div>
+<!-- elTOQUE Clickable Badge pill -->
+<a class="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface-bright text-primary-fixed-dim hover:text-on-surface transition-all duration-200 shadow-[0_0_12px_rgba(0,245,212,0.15)] hover:shadow-[0_0_16px_rgba(0,245,212,0.35)] focus:outline-none focus:ring-2 focus:ring-primary-container" href="https://eltoque.com" rel="noopener noreferrer" target="_blank" title="Ver cálculo de la tasa representativa en elTOQUE">
+<span class="material-symbols-outlined text-[16px] text-primary-container group-hover:scale-110 transition-transform">insights</span>
+<span class="font-label-sm text-label-sm font-semibold">Tasa representativa elTOQUE</span>
+<span class="material-symbols-outlined text-[14px] text-primary-container transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">north_east</span>
+</a>
+</section>
+<!-- Bidirectional Converter Interface -->
+<section class="w-full mt-space-md pt-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Calculadora de Conversión</span>
+<button class="font-label-sm text-label-sm text-outline hover:text-primary-container transition-colors py-1 px-2 rounded" id="reset-inputs-btn" title="Restablecer monto a 1" type="button">
+            Restablecer
+          </button>
+</div>
+<!-- Converter Dynamic Form -->
+<div class="relative flex flex-col gap-2 bg-surface-container-lowest p-space-sm sm:p-space-md rounded-xl">
+<!-- Box: Field 1 (From) -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low transition-colors duration-150 focus-within:bg-surface-container-high focus-within:ring-2 focus-within:ring-primary-container" id="container-field-from">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<label for="input-from" id="label-from">Cantidad en USDT</label>
+<span class="text-primary-container font-bold" id="badge-code-from">USDT</span>
+</div>
+<div class="flex items-center justify-between gap-space-sm">
+<input aria-describedby="label-from" class="w-full bg-transparent text-2xl sm:text-3xl font-currency-tabular font-bold text-on-surface focus:outline-none placeholder:text-outline-variant [appearance:textfield] [&amp;::-webkit-outer-spin-button]:appearance-none [&amp;::-webkit-inner-spin-button]:appearance-none" id="input-from" inputmode="decimal" min="0" placeholder="0.00" step="any" type="number" value="1">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-highest text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed" id="symbol-from">toll</span>
+<span class="font-headline-sm text-headline-sm" id="pill-code-from">USDT</span>
+</div>
+</div>
+</div>
+<!-- Interactive Swap Action Button -->
+<div class="relative flex items-center justify-center my-[-10px] z-10">
+<button aria-label="Invertir dirección de cálculo monetario" class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg hover:shadow-[0_0_18px_rgba(0,245,212,0.45)] hover:scale-105 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-container-lowest focus:ring-primary-container" id="swap-currencies-btn" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform duration-300" id="swap-icon">swap_vert</span>
+</button>
+</div>
+<!-- Box: Field 2 (To) -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low transition-colors duration-150 focus-within:bg-surface-container-high focus-within:ring-2 focus-within:ring-primary-container" id="container-field-to">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<label for="input-to" id="label-to">Equivalente en CUP (Peso Cubano)</label>
+<span class="text-tertiary-container font-bold" id="badge-code-to">CUP</span>
+</div>
+<div class="flex items-center justify-between gap-space-sm">
+<input aria-describedby="label-to" class="w-full bg-transparent text-2xl sm:text-3xl font-currency-tabular font-bold text-primary-container focus:outline-none placeholder:text-outline-variant [appearance:textfield] [&amp;::-webkit-outer-spin-button]:appearance-none [&amp;::-webkit-inner-spin-button]:appearance-none" id="input-to" inputmode="decimal" min="0" placeholder="0.00" step="any" type="number" value="365.00">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-highest text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed" id="symbol-to">payments</span>
+<span class="font-headline-sm text-headline-sm" id="pill-code-to">CUP</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Conversion Breakdown Pill -->
+<div class="w-full flex items-center justify-between px-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary-container">sync_alt</span>
+<span id="conversion-formula-label">Fórmula: 1 USDT = 368.50 CUP</span>
+</div>
+<button class="flex items-center gap-1 text-primary-fixed-dim hover:text-primary-container transition-colors py-0.5 px-1.5 rounded focus:outline-none focus:ring-1 focus:ring-primary-container" id="copy-result-btn" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span id="copy-result-text">Copiar</span>
+</button>
+</div>
+</section>
+<!-- Instant Quick Preset Chips -->
+
+</article>
+</div>
+</div>
+<script>
+(function() {
+  // State management
+  const state = {
+    activeCurrency: 'USD',
+    rate: 365.00,
+    rateName: 'Dólar Estadounidense',
+    rateIcon: 'attach_money',
+    rateChange: '+1.38%',
+    isSwapped: false, // false: Foreign -> CUP | true: CUP -> Foreign
+    inputFromValue: 1,
+    inputToValue: 365.00
+  };
+
+  const currencyData = {
+    USD: { rate: 365.00, change: '+1.38%', name: 'Dólar Estadounidense', icon: 'attach_money' },
+    EUR: { rate: 395.00, change: '+0.76%', name: 'Euro Europeo', icon: 'euro' },
+    MLC: { rate: 270.00, change: '+0.00%', name: 'Moneda Libremente Convertible', icon: 'credit_card' },
+    USDT: { rate: 368.50, change: '+1.52%', name: 'Tether Crypto USD', icon: 'toll' }
+  };
+
+  // DOM Elements
+  const tabs = document.querySelectorAll('.currency-tab');
+  const panel = document.getElementById('currency-panel');
+  const rateValueEl = document.getElementById('active-rate-value');
+  const rateCurrencyNameEl = document.getElementById('rate-currency-name');
+  const rateIconEl = document.getElementById('rate-icon');
+  const rateChangeTextEl = document.getElementById('rate-change-text');
+  
+  const inputFrom = document.getElementById('input-from');
+  const inputTo = document.getElementById('input-to');
+  const labelFrom = document.getElementById('label-from');
+  const labelTo = document.getElementById('label-to');
+  const badgeCodeFrom = document.getElementById('badge-code-from');
+  const badgeCodeTo = document.getElementById('badge-code-to');
+  const pillCodeFrom = document.getElementById('pill-code-from');
+  const pillCodeTo = document.getElementById('pill-code-to');
+  const symbolFrom = document.getElementById('symbol-from');
+  const symbolTo = document.getElementById('symbol-to');
+  const swapBtn = document.getElementById('swap-currencies-btn');
+  const swapIcon = document.getElementById('swap-icon');
+  const resetBtn = document.getElementById('reset-inputs-btn');
+  const copyBtn = document.getElementById('copy-result-btn');
+  const copyResultText = document.getElementById('copy-result-text');
+  const formulaLabel = document.getElementById('conversion-formula-label');
+  const presetBtns = document.querySelectorAll('.preset-btn');
+  const syncTimeBadge = document.getElementById('sync-time-badge');
+
+  function formatDecimal(val, decimals = 2) {
+    if (isNaN(val) || val === null || val === '') return '';
+    return Number(val).toLocaleString('es-ES', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function recalculateFromPrimary() {
+    const rawVal = parseFloat(inputFrom.value);
+    if (isNaN(rawVal)) {
+      inputTo.value = '';
+      return;
+    }
+    if (!state.isSwapped) {
+      // Foreign -> CUP
+      const res = rawVal * state.rate;
+      inputTo.value = (Math.round(res * 100) / 100).toFixed(2);
+    } else {
+      // CUP -> Foreign
+      const res = rawVal / state.rate;
+      inputTo.value = (Math.round(res * 100) / 100).toFixed(2);
+    }
+  }
+
+  function recalculateFromSecondary() {
+    const rawVal = parseFloat(inputTo.value);
+    if (isNaN(rawVal)) {
+      inputFrom.value = '';
+      return;
+    }
+    if (!state.isSwapped) {
+      // CUP -> Foreign
+      const res = rawVal / state.rate;
+      inputFrom.value = (Math.round(res * 100) / 100).toFixed(2);
+    } else {
+      // Foreign -> CUP
+      const res = rawVal * state.rate;
+      inputFrom.value = (Math.round(res * 100) / 100).toFixed(2);
+    }
+  }
+
+  function updateFormulaText() {
+    if (!state.isSwapped) {
+      formulaLabel.textContent = `Fórmula: 1 ${state.activeCurrency} = ${state.rate.toFixed(2)} CUP`;
+    } else {
+      const inverse = (1 / state.rate).toFixed(4);
+      formulaLabel.textContent = `Fórmula: 1 CUP ≈ ${inverse} ${state.activeCurrency}`;
+    }
+  }
+
+  function updateCurrencyUI(animate = true) {
+    if (animate) {
+      rateValueEl.classList.add('opacity-0', 'translate-y-1');
+      setTimeout(() => {
+        rateValueEl.textContent = state.rate.toFixed(2);
+        rateCurrencyNameEl.textContent = `1 ${state.rateName} (${state.activeCurrency})`;
+        rateIconEl.textContent = state.rateIcon;
+        rateChangeTextEl.textContent = `${state.rateChange} (24h)`;
+        rateValueEl.classList.remove('opacity-0', 'translate-y-1');
+      }, 150);
+    } else {
+      rateValueEl.textContent = state.rate.toFixed(2);
+      rateCurrencyNameEl.textContent = `1 ${state.rateName} (${state.activeCurrency})`;
+      rateIconEl.textContent = state.rateIcon;
+      rateChangeTextEl.textContent = `${state.rateChange} (24h)`;
+    }
+
+    if (!state.isSwapped) {
+      labelFrom.textContent = `Cantidad en ${state.activeCurrency}`;
+      badgeCodeFrom.textContent = state.activeCurrency;
+      pillCodeFrom.textContent = state.activeCurrency;
+      symbolFrom.textContent = state.rateIcon;
+
+      labelTo.textContent = 'Equivalente en CUP (Peso Cubano)';
+      badgeCodeTo.textContent = 'CUP';
+      pillCodeTo.textContent = 'CUP';
+      symbolTo.textContent = 'payments';
+    } else {
+      labelFrom.textContent = 'Cantidad en CUP (Peso Cubano)';
+      badgeCodeFrom.textContent = 'CUP';
+      pillCodeFrom.textContent = 'CUP';
+      symbolFrom.textContent = 'payments';
+
+      labelTo.textContent = `Equivalente en ${state.activeCurrency}`;
+      badgeCodeTo.textContent = state.activeCurrency;
+      pillCodeTo.textContent = state.activeCurrency;
+      symbolTo.textContent = state.rateIcon;
+    }
+
+    updateFormulaText();
+    recalculateFromPrimary();
+  }
+
+  // Currency Tab Selection Handler
+  function selectTab(btn) {
+    const curr = btn.getAttribute('data-currency');
+    if (!currencyData[curr]) return;
+
+    tabs.forEach(tab => {
+      tab.setAttribute('aria-selected', 'false');
+      tab.setAttribute('tabindex', '-1');
+      tab.className = 'currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface hover:bg-surface-container';
+    });
+
+    btn.setAttribute('aria-selected', 'true');
+    btn.setAttribute('tabindex', '0');
+    btn.className = 'currency-tab flex flex-col items-center justify-center py-2 px-1 rounded-md font-headline-sm text-headline-sm transition-all duration-200 bg-surface-container-high text-primary-container shadow-sm';
+    btn.focus();
+
+    state.activeCurrency = curr;
+    state.rate = currencyData[curr].rate;
+    state.rateName = currencyData[curr].name;
+    state.rateIcon = currencyData[curr].icon;
+    state.rateChange = currencyData[curr].change;
+
+    updateCurrencyUI(true);
+  }
+
+  // Keyboard navigation for Tabs according to WAI-ARIA
+  const tabList = document.querySelector('[role="tablist"]');
+  tabList.addEventListener('keydown', (e) => {
+    const tabArray = Array.from(tabs);
+    const currentIndex = tabArray.indexOf(document.activeElement);
+
+    if (currentIndex === -1) return;
+
+    let nextIndex = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      nextIndex = (currentIndex + 1) % tabArray.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      nextIndex = (currentIndex - 1 + tabArray.length) % tabArray.length;
+    } else if (e.key === 'Home') {
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      nextIndex = tabArray.length - 1;
+    }
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      selectTab(tabArray[nextIndex]);
+    }
+  });
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => selectTab(tab));
+  });
+
+  // Bidirectional Input Listeners
+  inputFrom.addEventListener('input', recalculateFromPrimary);
+  inputTo.addEventListener('input', recalculateFromSecondary);
+
+  // Swap calculation order
+  swapBtn.addEventListener('click', () => {
+    state.isSwapped = !state.isSwapped;
+    swapIcon.classList.toggle('rotate-180');
+
+    // Exchange values
+    const prevFromVal = inputFrom.value;
+    const prevToVal = inputTo.value;
+
+    inputFrom.value = prevToVal || '1';
+    
+    updateCurrencyUI(false);
+    recalculateFromPrimary();
+  });
+
+  // Reset Button
+  resetBtn.addEventListener('click', () => {
+    inputFrom.value = '1';
+    recalculateFromPrimary();
+    inputFrom.focus();
+  });
+
+  // Preset Buttons
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const presetAmount = btn.getAttribute('data-preset');
+      inputFrom.value = presetAmount;
+      recalculateFromPrimary();
+    });
+  });
+
+  // Copy Result to Clipboard
+  copyBtn.addEventListener('click', async () => {
+    const textToCopy = `${inputFrom.value} ${badgeCodeFrom.textContent} = ${inputTo.value} ${badgeCodeTo.textContent}`;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(textToCopy);
+      } else {
+        const temp = document.createElement('textarea');
+        temp.value = textToCopy;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+      }
+      copyResultText.textContent = '¡Copiado!';
+      setTimeout(() => {
+        copyResultText.textContent = 'Copiar';
+      }, 1600);
+    } catch (err) {
+      copyResultText.textContent = 'Listo';
+      setTimeout(() => {
+        copyResultText.textContent = 'Copiar';
+      }, 1600);
+    }
+  });
+
+  // Dynamic subtle time update simulator
+  let minutesAgo = 4;
+  setInterval(() => {
+    minutesAgo = (minutesAgo % 29) + 1;
+    syncTimeBadge.textContent = `Última sincronización: hace ${minutesAgo} min`;
+  }, 60000);
+
+  // Initial Calculation
+  recalculateFromPrimary();
+})();
+</script></main><footer class="w-full bg-surface-container-lowest/60 backdrop-blur-md py-space-md mt-auto"><div class="w-full max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg flex flex-col sm:flex-row items-center justify-between gap-space-xs text-on-surface-variant font-label-sm text-label-sm"><span>Datos de mercado referenciales para el peso cubano (CUP).</span><span>Made By <span class="font-semibold" style="color: rgb(56, 189, 248);">Trev7or23</span></span><span>Monitoreo continuo</span></div></footer>
+
+
+
+</body></html>
