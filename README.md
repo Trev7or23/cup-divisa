@@ -1,29 +1,25 @@
 # cup-divisa
 
-> Currency actual value: a server that hosts and serves the real value of the currency, plus the web frontend that consumes it.
+Cup Divisa: Is a service who lets you see the current and reliable value of foreign currencies — mainly the USD — quickly and easily, for the people in Cuba buying or selling them, without needing a VPN.
 
-## For recruiters
-
-This repo contains the `cup-divisa` project — a full application with three independent packages:
-
-- **`backend/`** — The API that hosts the cup currency actual value. Express 5 on Node 22, pnpm, TypeScript, Postgres (pg), swagger-ui-express + swagger-autogen for interactive docs.
-- **`web/`** — The frontend. Astro 7 with Preact and Tailwind v4, deployed to GitHub Pages (https://trev7or23.github.io).
-- **`workers/`** — Cloudflare Workers (wrangler) for deploys, e.g. the `github-cron-trigger-cup-divisa` trigger.
+Programmer measures: the backend is separate from the frontend so we can consume the ELTOQUE API server-side and store the latest records in a database — the service keeps working even if the ELTOQUE API is down; the frontend data is fetched at build time for near-instant access, refreshed every 30 minutes; and a worker forces GitHub to recompile and consume the API every 30 minutes.
 
 ## Stack
 
-| Area | Technologies |
-| --- | --- |
+| Area    | Technologies                                                                         |
+| ------- | ------------------------------------------------------------------------------------ |
 | Backend | Node 22, Express 5, TypeScript (tsc), pnpm, Postgres (pg), axios, swagger-ui-express |
-| Web | Astro 7, Preact, @tailwindcss/vite (v4), timeago.js |
-| Workers | Cloudflare Workers, wrangler |
-| Tooling | tsx, oxlint, prettier, astro CLI |
+| Web     | Astro 7, Preact, @tailwindcss/vite (v4), timeago.js                                  |
+| Workers | Cloudflare Workers, wrangler                                                         |
+| Tooling | tsx, oxlint, prettier, astro CLI                                                     |
 
 ## Demo
 
-The API is live on Render as `cup-divisa-api` (see `backend/render.yaml`), and the web assets are served from GitHub Pages: https://trev7or23.github.io.
+The API is live on Render as `cup-divisa-api` (see `backend/render.yaml`), and the web assets are served from GitHub Pages: https://trev7or23.github.io/cup-divisa.
 
 ## How to run
+
+> **Note**: Both packages ship `.env.example` (`backend/.env.example`, `web/.env.example`). Copy each to `.env` and insert the correct values (database credentials, API URLs, etc.) so the backend and frontend run.
 
 ### Web
 
